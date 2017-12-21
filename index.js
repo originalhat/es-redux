@@ -1,5 +1,9 @@
-const express = require('express');
+import {initializeDatabase} from "./applications/server/database";
+import express from 'express';
+
 const app = express();
+
+initializeDatabase();
 
 app.get('/', function (req, res) {
     res.send('Hello World!')
