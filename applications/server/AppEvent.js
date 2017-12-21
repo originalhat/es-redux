@@ -1,7 +1,7 @@
-import * as database from "./AppDatabase";
+import * as AppDatabase from "./AppDatabase";
 
 export function create(type, data) {
-    database.setEvents([{
+    AppDatabase.setEvents([{
         version: 1,
         type,
         data

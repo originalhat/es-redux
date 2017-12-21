@@ -6,7 +6,7 @@ const COLLECTION = 'event';
 
 export function setEvents(events) {
     MongoClient.connect(HOST, function (err, client) {
-        console.log("Connected successfully to database");
+        console.log("Connected successfully to AppDatabase");
 
         const db = client.db(DATABASE);
         const collection = db.collection(COLLECTION);
@@ -23,7 +23,7 @@ export function setEvents(events) {
 
 export function getEvents() {
     MongoClient.connect(HOST, function (err, client) {
-        console.log("Connected successfully to database");
+        console.log("Connected successfully to AppDatabase");
 
         const db = client.db(DATABASE);
         const collection = db.collection(COLLECTION);

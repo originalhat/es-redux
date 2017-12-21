@@ -7,7 +7,7 @@ export function process(commands) {
                 AppEvent.create('CreateTodo', new CreateTodo(command.payload));
                 break;
             default:
-                console.log('unknown command received')
+                console.log('unknown AppCommand received')
         }
     });
 }

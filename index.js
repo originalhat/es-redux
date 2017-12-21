@@ -1,6 +1,6 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import * as command from "./applications/server/AppCommand";
+import * as AppCommand from "./applications/server/AppCommand";
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.get('/events', function (req, res) {
 });
 
 app.post('/commands', function (req, res) {
-    command.process(req.body);
+    AppCommand.process(req.body);
     res.sendStatus(200);
 });
 
