@@ -1,21 +1,25 @@
-import {initializeDatabase} from "./applications/server/database";
 import express from 'express';
+import * as bodyParser from 'body-parser';
+import * as command from "./applications/server/command";
 
 const app = express();
 
-initializeDatabase();
+app.use(bodyParser.json()); // for parsing application/json
 
 app.get('/', function (req, res) {
     res.send('Hello World!')
 });
 
-app.post('/events', function (req, res) {
-    res.send('Got a POST request')
+app.get('/events', function (req, res) {
+    res.send('return all events')
 });
 
 app.post('/commands', function (req, res) {
-    res.send('Got a POST request')
+    command.process(req.body);
+    res.sendStatus(200);
 });
+
+/* insert WS service here */
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
 

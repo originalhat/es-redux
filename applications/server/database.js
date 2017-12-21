@@ -1,45 +1,41 @@
-let MongoClient = require('mongodb').MongoClient;
+import {MongoClient} from 'mongodb';
 
-class Database {
-    constructor() {
+const HOST = 'mongodb://localhost:27017';
+const DATABASE = 'todo';
+const COLLECTION = 'event';
 
-    }
-
-    setEvent() {
-
-    }
-
-    getEvent() {
-
-    }
-}
-
-export function initializeDatabase() {
-    MongoClient.connect('mongodb://localhost:27017', function (err, client) {
+export function setEvents() {
+    MongoClient.connect(HOST, function (err, client) {
         console.log("Connected successfully to database");
 
-        const db = client.db('animals');
+        const db = client.db(DATABASE);
+        const collection = db.collection(COLLECTION);
 
-        const collection = db.collection('mammals');
-
-        // console.log(collection.find({}))
-
-        collection.insertMany([
-            {a: 1}, {a: 2}, {a: 3}
-        ], function (err, result) {
-            // assert.equal(err, null);
-            // assert.equal(3, result.result.n);
-            // assert.equal(3, result.ops.length);
-            console.log("Inserted 3 documents into the collection");
-            // callback(result);
+        collection.insertMany(events, (err, results) => {
+            if (err) {
+                throw err;
+            }
         });
 
-        console.log(collection.find({}).toArray(function (err, docs) {
-            // assert.equal(err, null);
+        client.close();
+    });
+}
+
+export function getEvents() {
+    MongoClient.connect(HOST, function (err, client) {
+        console.log("Connected successfully to database");
+
+        const db = client.db(DATABASE);
+        const collection = db.collection(COLLECTION);
+
+        collection.find({}).toArray(function (err, docs) {
+            if (err) {
+                throw err;
+            }
+
             console.log("Found the following records");
             console.log(docs)
-            // callback(docs);
-        }));
+        });
 
         client.close();
     });
