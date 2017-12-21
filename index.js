@@ -1,10 +1,10 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import * as command from "./applications/server/command";
+import * as command from "./applications/server/AppCommand";
 
 const app = express();
 
-app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     res.send('Hello World!')

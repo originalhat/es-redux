@@ -4,7 +4,7 @@ const HOST = 'mongodb://localhost:27017';
 const DATABASE = 'todo';
 const COLLECTION = 'event';
 
-export function setEvents() {
+export function setEvents(events) {
     MongoClient.connect(HOST, function (err, client) {
         console.log("Connected successfully to database");
 
