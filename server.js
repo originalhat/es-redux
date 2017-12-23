@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/events', function (req, res) {
-    res.send('return all events')
+    res.json(serverStore.events);
 });
 
 app.post('/commands', function (req, res) {
