@@ -5,7 +5,7 @@ export default class WebStore {
     }
 
     addEvent(event) {
-        this.events.push([event]);
+        this.events.push(event);
         this.version++;
     }
 }
