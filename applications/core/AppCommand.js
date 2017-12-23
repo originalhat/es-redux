@@ -1,20 +1,13 @@
 import * as AppEvent from './AppEvent';
 
-export function process(commands) {
+export function process(commands, appStore) {
     commands.forEach((command) => {
         switch (command.type) {
             case 'CreateTodo':
-                AppEvent.create('CreateTodo', new CreateTodo(command.payload));
+                AppEvent.create('CreateTodo', command.data, appStore);
                 break;
             default:
                 console.log('unknown AppCommand received')
         }
     });
-}
-
-class CreateTodo {
-    constructor({text, completed}) {
-        this.text = text;
-        this.completed = completed;
-    }
 }

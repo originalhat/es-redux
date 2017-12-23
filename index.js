@@ -1,8 +1,10 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import * as AppCommand from "./applications/server/AppCommand";
+import * as AppCommand from "./applications/core/AppCommand";
+import ServerStore from "./applications/server/ServerStore";
 
 const app = express();
+const serverStore = new ServerStore();
 
 app.use(bodyParser.json());
 
@@ -15,7 +17,7 @@ app.get('/events', function (req, res) {
 });
 
 app.post('/commands', function (req, res) {
-    AppCommand.process(req.body);
+    AppCommand.process(req.body, serverStore);
     res.sendStatus(200);
 });
 
