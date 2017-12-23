@@ -1,7 +1,7 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import * as AppCommand from "./applications/core/appCommand";
-import ServerStore from "./applications/server/ServerStore";
+import ServerStore from "./applications/server/stores/ServerStore";
 
 const app = express();
 const serverStore = new ServerStore();
