@@ -1,4 +1,4 @@
-import * as AppEvent from './AppEvent';
+import * as AppEvent from './appEvent';
 
 export function process(commands, appStore) {
     commands.forEach((command) => {
