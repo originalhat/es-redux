@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-    entry: './applications/web/index.js',
+    entry: path.resolve(__dirname + '/applications/web/index.jsx'),
     devServer: {
-        contentBase: './applications/web/dist'
+        contentBase: path.resolve(__dirname + '/applications/web/dist')
     },
     output: {
         filename: 'bundle.js',
@@ -12,15 +12,14 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /(node_modules)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['babel-preset-env']
-                    }
-                }
-            }
+                test: /\.jsx?$/,
+                use: 'babel-loader',
+                include: __dirname + '/applications/web',
+                exclude: /node_modules/,
+            },
         ]
     },
+    resolve: {
+        extensions: ['.jsx', '.js'],
+    }
 };
