@@ -1,6 +1,7 @@
-/* this will eventually need be able to apply complex domain relations */
-export function materialize(events) {
-    return events.map((event) => {
-        return {data: event.data};
+export function materializedTodos(events) {
+    return events.filter((event) => {
+        return event.type === 'CreateTodo'
+    }).map((event) => {
+        return event.data;
     });
 }
