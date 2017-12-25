@@ -1,3 +1,5 @@
+// TODO: WebStore handle sync with server?
+
 export default class WebStore {
     constructor() {
         this.version = 0;
