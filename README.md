@@ -2,6 +2,8 @@
 
 Exploring a minimal working es/cqrs system using redux and redux-saga for client side state management.
 
+>A saga is a **failure management pattern**.
+
 ## references
 
 * [ex/forward-recovery](https://github.com/kuy/redux-saga-examples/blob/master/wizard/sagas/wizard.js)
